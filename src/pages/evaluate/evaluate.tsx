@@ -16,20 +16,20 @@ const Evaluate = () => {
 
   }
 
-  let ranges = [[], [], []]
+  let ranges = [[1], [2], [3]]
 
   return (
     <div className='p-15'>
       测试页面
 
-      {/* <Picker mode='multiSelector' value={[]} range={ranges} onChange={onChange}
+      <Picker mode='multiSelector' value={[0, 0, 0]} range={ranges} onChange={onChange}
         onColumnChange={columnChange}>
         <View>
           {province && <View>{province} {city} {area}</View>}
           {!province && <View>请选择地区</View>}
           <View>jjjjj</View>
         </View>
-      </Picker> */}
+      </Picker>
 
     </div>
   )

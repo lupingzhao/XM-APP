@@ -10,6 +10,7 @@ export const register = (mobile: string, code: string, username: string, passwor
       username: username,
       password: password
     }).then((res: any) => {
+
       // 触发reducer的方法
       Taro.showToast({
         title: res.msg
@@ -32,14 +33,16 @@ export const getCode = (mobile: string) => {
     api.getCode({
       mobile: mobile
     }).then((res: any) => {
-      Taro.showToast({
-        title: res.msg
-      })
-      // 触发reducer的方法
-      dispatch({
-        type: 'getCode',
-        data: res.data
-      })
+      if (res.code === 200) {
+        Taro.showToast({
+          title: res.msg
+        })
+        // 触发reducer的方法
+        dispatch({
+          type: 'getCode',
+          data: res.data
+        })
+      }
     }
     ).catch((err: any) => {
       console.log(err)
@@ -105,25 +108,30 @@ export const userLogin = (username: string, password: string) => {
 export const getAreaList = () => {
   return (dispatch: any) => {
     api.getAreaList().then((res: any) => {
-      res.data.map((t: any) => {
-        t.title = t.py_head,
-          t.key = t.py_head,
-          t.items = t.name_list
-      })
-      dispatch({
-        type: 'getAreaList',
-        data: res.data
-      })
+      if (res.code === 200) {
+        res.data.map((t: any) => {
+          t.title = t.py_head,
+            t.key = t.py_head,
+            t.items = t.name_list
+        })
+        dispatch({
+          type: 'getAreaList',
+          data: res.data
+        })
+      }
     })
+
   }
 }
 export const searchAreaList = (content: string) => {
   return (dispatch: any) => {
     api.searchAreaList(content).then((res: any) => {
-      dispatch({
-        type: 'searchAreaList',
-        data: res.data.data.area_list
-      })
+      if (res.code === 200) {
+        dispatch({
+          type: 'searchAreaList',
+          data: res.data.data.area_list
+        })
+      }
     })
   }
 }
@@ -135,10 +143,13 @@ export const getStoreHome = (name: string, id: string) => {
       // 地区id
       area_id: id
     }).then((res: any) => {
-      dispatch({
-        type: 'getStoreHome',
-        data: res.data.data.store_type_list
-      })
+      if (res.code === 200) {
+        dispatch({
+          type: 'getStoreHome',
+          data: res.data.data.store_type_list
+        })
+      }
+
     })
   }
 }
@@ -147,11 +158,12 @@ export const getStoreDetail = (id: string) => {
     api.getStoreDetail(
       id
     ).then((res: any) => {
-      console.log(res.data);
-      dispatch({
-        type: 'getStoreDetail',
-        data: res.data
-      })
+      if (res.code === 200) {
+        dispatch({
+          type: 'getStoreDetail',
+          data: res.data
+        })
+      }
     })
   }
 }
