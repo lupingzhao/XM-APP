@@ -1,0 +1,21 @@
+.login {
+
+  .at-tabs {
+    height: fit-content;
+  }
+
+  .tab {
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .code {
+    color: #6190E8;
+  }
+
+  .at-input {
+    width: 80vw !important;
+  }
+}

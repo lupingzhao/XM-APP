@@ -1,0 +1,45 @@
+.index {
+  flex-direction: column;
+  width: 100%;
+}
+
+.home {
+  .img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .nav {
+    display: grid;
+    /* 列 几组数代表每列的宽 剩余的宽度自适应 */
+    grid-template-columns: 50% 25% 25%;
+    /* 列 几组数代表每行的高 剩余的宽度自适应 */
+    grid-template-rows: 250px;
+    /* 填充方向 row 优先填充行  columns优先列*/
+    grid-auto-flow: row;
+  }
+
+  .goods {
+    width: 90%;
+    height: 180px;
+  }
+
+  .scroll-x {
+    position: sticky;
+    top: 0;
+    z-index: 22;
+  }
+
+  .scrollview-X {
+    white-space: nowrap;
+
+    .recnav {
+      display: inline-block;
+    }
+
+    .desc {
+      background-color: #FF5934;
+      color: #fff;
+    }
+  }
+}
